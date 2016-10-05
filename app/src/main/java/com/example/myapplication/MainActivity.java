@@ -1,36 +1,29 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
-import android.widget.Space;
 
 public class MainActivity extends AppCompatActivity {
-    public final static String EXTRA_COLOR = "com.example.myapplication.COLOR";
-
-    private SeekBar seekBarR;
-    private SeekBar seekBarG;
-    private SeekBar seekBarB;
-    private Space colorSpace;
+    private int valueR = 128;
+    private int valueG = 128;
+    private int valueB = 128;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_portrait);
 
-        seekBarR = (SeekBar)findViewById(R.id.seekBarR);
-        seekBarG = (SeekBar)findViewById(R.id.seekBarG);
-        seekBarB = (SeekBar)findViewById(R.id.seekBarB);
-        colorSpace = (Space)findViewById(R.id.colorSpace);
+        SeekBar seekBarR = (SeekBar)findViewById(R.id.seekBarR);
+        SeekBar seekBarG = (SeekBar)findViewById(R.id.seekBarG);
+        SeekBar seekBarB = (SeekBar)findViewById(R.id.seekBarB);
 
         seekBarR.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                handleProgressChange();
+                valueR = progress;
+                changeColor();
             }
 
             @Override
@@ -47,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         seekBarG.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                handleProgressChange();
+                valueG = progress;
+                changeColor();
             }
 
             @Override
@@ -64,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         seekBarB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                handleProgressChange();
+                valueB = progress;
+                changeColor();
             }
 
             @Override
@@ -77,13 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        changeColor();
     }
 
-    private void handleProgressChange() {
-        int valueR = seekBarR.getProgress();
-        int valueG = seekBarG.getProgress();
-        int valueB = seekBarB.getProgress();
-
-        colorSpace.setBackgroundColor(Color.rgb(valueR, valueG, valueB));
+    private void changeColor() {
+        findViewById(R.id.activity_main).setBackgroundColor(Color.rgb(valueR, valueG, valueB));
     }
 }
