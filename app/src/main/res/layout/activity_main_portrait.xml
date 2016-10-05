@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.myapplication.MainActivity">
+
+    <Space
+        android:id="@+id/colorSpace"
+        android:layout_width="match_parent"
+        android:layout_height="700px"
+        />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/seekBarR"
+        android:max="255"
+        android:progress="128"
+        android:layout_below="@+id/colorSpace"
+        android:on="changeColor"
+        />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/seekBarG"
+        android:max="255"
+        android:progress="128"
+        android:layout_below="@+id/seekBarR"
+        android:onClick="changeColor"
+        />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/seekBarB"
+        android:max="255"
+        android:progress="128"
+        android:layout_below="@+id/seekBarG"
+        android:onClick="changeColor"
+        />
+
+</RelativeLayout>
